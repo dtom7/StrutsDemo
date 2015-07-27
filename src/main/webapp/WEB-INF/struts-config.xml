@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+   <form-beans>
+      <form-bean name="helloWorldForm"
+         type="com.example.strutsdemo.form.HelloWorldForm" />
+   </form-beans>
+
+   <action-mappings>
+      <action path="/helloWorld" type="org.apache.struts.actions.ForwardAction"
+         name="helloWorldForm" validate="false" parameter="/WEB-INF/jsp/HelloWorldForm.jsp" />
+      <action path="/processHelloWorld"
+         type="com.example.strutsdemo.action.HelloWorldAction" name="helloWorldForm">
+         <forward name="success" path="/helloWorldResult.do"
+            redirect="true" />
+      </action>
+      <action path="/helloWorldResult" type="org.apache.struts.actions.ForwardAction"
+         parameter="/WEB-INF/jsp/HelloWorldResult.jsp" />
+   </action-mappings>
+
+</struts-config>
